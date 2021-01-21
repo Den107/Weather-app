@@ -100,6 +100,7 @@ body {
     align-items: center;
 }
 .weather-block {
+    opacity: 0;
     display: flex;
     justify-content: space-between;
     min-height: 300px;
@@ -148,9 +149,11 @@ body {
 .search-form {
     width: 821px;
     position: absolute;
+    z-index: 10;
     left: 50%;
-    transform: translateX(-50%);
-    top: 50px;
+    transform: translate(-50%, 1000%);
+    /* top: 50px; */
+    /* top: 50%; */
 }
 
 .search-form__input {
@@ -162,4 +165,31 @@ body {
 .search-form__button {
     font-size: 20px;
     padding: 10px;
+}
+.animate-form {
+    animation-name: animateForm;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    transition-delay: 1s;
+}
+.animate-block {
+    animation-name: animateBlock;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+@keyframes animateForm {
+    to {
+        transform: translate(-50%, 100%);
+    }
+    from {
+        transform: translate(-50%, 1000%);
+    }
+}
+@keyframes animateBlock {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
