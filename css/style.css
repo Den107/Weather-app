@@ -89,6 +89,7 @@ body {
     background-color: rgba(0, 0, 0, 0.7);
     background-repeat: no-repeat;
     background-size: cover;
+    position: relative;
 }
 .container {
     max-width: 1440px;
@@ -107,7 +108,7 @@ body {
 
     top: 50%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-40%);
     border: 3px solid black;
 }
 
@@ -143,4 +144,22 @@ body {
 }
 .block + .block {
     border-left: 1px solid black;
+}
+.search-form {
+    width: 821px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 50px;
+}
+
+.search-form__input {
+    width: 697px;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.search-form__button {
+    font-size: 20px;
+    padding: 10px;
 }
