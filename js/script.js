@@ -16,8 +16,8 @@ function clear() {
 }
 
 clear();
-getWheather();
-function getWheather(city = 'London') {
+getWheatherByCityName();
+function getWheatherByCityName(city = 'London') {
     fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`)
         .then(function (resp) { return resp.json(); })
         .then(function (data) {
@@ -32,14 +32,30 @@ function getWheather(city = 'London') {
         });
 }
 
+function getWheatherByID(id = 'London') {
+    fetch(`http://api.openweathermap.org/data/2.5/weather?id=${id}&appid=${API_KEY}`)
+        .then(function (resp) { return resp.json(); })
+        .then(function (data) {
+            console.log(data);
+            cityName.textContent = data.name;
+            cityTemp.innerHTML = `${Math.floor(data.main.temp - 273.15)}&degC`;
+            cityWeather.textContent = data.weather[0].main;
+            icon.innerHTML = `<img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="icon">`;
+        })
+        .catch(function () {
+            console.log(new Error('error'));
+        });
+}
 
 searchForm.addEventListener('submit', function (event) {
     event.preventDefault();
-    let city = searchCity.value.toLowerCase();
-    if (!city || typeof city !== 'string') {
+    let request = searchCity.value.toLowerCase();
+    if (!request) {
         searchCity.attributes.placeholder.textContent = 'Insert city name';
+    } else if (isNaN(Number(request))) {
+        getWheatherByCityName(request);
     } else {
-        getWheather(city);
+        getWheatherByID(request);
     }
 });
 
