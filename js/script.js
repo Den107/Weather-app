@@ -38,6 +38,7 @@ function getWheatherByCityName(city = 'London') {
         })
         .catch(function () {
             console.log(new Error('error'));
+            cityName.textContent = 'City not found';
         });
 }
 
@@ -54,6 +55,7 @@ function getWheatherByID(id = 'London') {
         })
         .catch(function () {
             console.log(new Error('error'));
+            cityName.textContent = 'City not found';
         });
 }
 
